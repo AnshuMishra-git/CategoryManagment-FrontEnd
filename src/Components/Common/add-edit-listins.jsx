@@ -3,20 +3,12 @@ import 'primeicons/primeicons.css';
 import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.css';
 import 'primeflex/primeflex.css';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import CIcon from '@coreui/icons-react';
 import { InputText } from 'primereact/inputtext';
 import {
     cilCheck, cilXCircle
 } from '@coreui/icons';
-import { CFormCheck } from '@coreui/react'
-import { InputNumber } from 'primereact/inputnumber';
-import { Checkbox } from 'primereact/checkbox';
-import { Tooltip } from 'primereact/tooltip';
-import { CImage } from '@coreui/react'
-import {
-    cilCloudUpload
-} from '@coreui/icons'
 import fetchApi from '../../Common/fetchApi';
 import url from '../../Common/Url';
 
@@ -30,9 +22,6 @@ const AddeditListing = () => {
     const search = useLocation().search;
     const id = new URLSearchParams(search).get('id');
     const name = new URLSearchParams(search).get('name');
-
-    console.log('name-->>>', name);
-
     const [categoryData, setCategoryData] = useState([]);
     const [subCategoryData, setSubCategoryData] = useState([]);
 
@@ -97,7 +86,6 @@ const AddeditListing = () => {
             reqUrl: apiUrl,
             data: obj,
         });
-        console.log('Response ===>>>', response);
         if (response.data.code == 200) {
             // navigate('/');
             if (name == "Category") navigate('/');
@@ -117,19 +105,6 @@ const AddeditListing = () => {
             setMasterForm({ ...masterForm, [event.target.name]: event.target.value })
         }
     }
-
-    // const onDropdownChangeAddress = (e, key) => {
-    //     setMasterForm({ ...masterForm, [key]: e.target.value })
-    //     let errors = error
-    //     errors[key] = ''
-    //     setErrors({ ...errors });
-    //     if (key === 'country') {
-    //         setCountryId(e.target.value);
-    //         getStateList(e.target.value);
-    //     }
-
-    // }
-
 
     const getDataUrl = async () => {
         if (name == 'Category') return `${url.CATEGORY}?_id=${id}`
@@ -163,7 +138,6 @@ const AddeditListing = () => {
         const updatedUrl = `${url.SUB_CATEGORY}?_id=${masterForm.category}&name=categoryId`;
         const response = await fetchApi({ method: 'get', param: updatedUrl });
         setLoading(false);
-        console.log('Length', response.data.data.length);
         if (response.data.data.length) {
             setSubCategoryData(response.data.data)
         } else setSubCategoryData([response.data.data]);

@@ -12,7 +12,6 @@ import { useLocation } from 'react-router-dom';
 
 function Header() {
   const [activeIndex, setActiveIndex] = useState(0);
-  // let history = useHistory();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -27,8 +26,6 @@ function Header() {
     { label: "Category", icon: "pi pi-fw pi-home" },
     { label: "Sub Category", icon: "pi pi-fw pi-calendar" },
     { label: "Child Sub Category", icon: "pi pi-fw pi-pencil" },
-    // { label: "Documentation", icon: "pi pi-fw pi-file" },
-    // { label: "Settings", icon: "pi pi-fw pi-cog" }
   ];
 
   const onTabChanges = (e) =>{

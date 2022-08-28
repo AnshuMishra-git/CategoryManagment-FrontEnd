@@ -7,16 +7,10 @@ import React, { useState, useEffect, useRef } from 'react'
 import { Button } from 'primereact/button';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
-import CIcon from '@coreui/icons-react';
-import { CBadge, CButton } from '@coreui/react'
-import { cilList, cilPlus, cilPencil, cilTrash } from '@coreui/icons';
 import { useNavigate } from "react-router-dom";
-import url from '../../Common/Url'
 import fetchApi from '../../Common/fetchApi';
 
-
 function ListingData(props) {
-    console.log('Props--->>>', props);
     const [data, setData] = useState(props?.data);
     const navigate = useNavigate();
 
@@ -91,13 +85,6 @@ function ListingData(props) {
                         }
                         <Column field="name" header={`${props?.shortName}`} body={nameBodyTemplate}></Column>
                         <Column field="action" header="Action" body={actionBodyTemplate} style={{ width: '10%' }}></Column>
-
-
-                        {/* <Column header="Image" body={imageBodyTemplate}></Column>
-                    <Column field="price" header="Price" body={priceBodyTemplate}></Column>
-                    <Column field="category" header="Category"></Column>
-                    <Column field="rating" header="Reviews" body={ratingBodyTemplate}></Column>
-                    <Column header="Status" body={statusBodyTemplate}></Column> */}
                     </DataTable>
                 </div>
             </div>

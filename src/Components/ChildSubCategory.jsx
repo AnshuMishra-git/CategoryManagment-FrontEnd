@@ -35,11 +35,6 @@ function ChildSubCategory() {
         const resonse = await fetchApi({ method: 'get', param: updatedUrl });
         setLoading(false);
         setData(resonse.data.data);
-        // const response = await fetchApi({
-        //     method: 'post',
-        //     reqUrl: url.CATEGORY,
-        //     data: body,
-        // });
     }
     return (
         <div>
